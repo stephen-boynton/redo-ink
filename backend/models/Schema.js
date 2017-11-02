@@ -20,8 +20,10 @@ const AuthorSchema = new mongoose.Schema({
 const PostSchema = new mongoose.Schema({
   title: { type: String },
   body: { type: String },
+  img: { type: String },
   date: { type: String, default: moment().format() },
   tags: [{ type: String }],
+  featured: { type: Boolean, default: false },
   author: { type: mongoose.Schema.Types.ObjectId, ref: "Author" },
   comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],
   faves: { type: Number, default: 0 }
@@ -31,6 +33,7 @@ const CommentSchema = new mongoose.Schema({
   title: { type: String },
   body: { type: String },
   date: { type: String, default: moment().format() },
+  featured: { type: Boolean, default: false },
   author: { type: mongoose.Schema.Types.ObjectId, ref: "Author" },
   faves: { type: Number, default: 0 }
 });
