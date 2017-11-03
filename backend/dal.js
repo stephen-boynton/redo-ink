@@ -4,6 +4,7 @@ mongoose.Promise = require("bluebird");
 
 mongoose.connect("mongodb://localhost:27017/blogDB");
 
+//============================= Creation
 function createAuthor(authorObj) {
   const author = new Author({
     username: authorObj.username,
@@ -27,6 +28,7 @@ function createPost(postObj) {
   post.save(err => console.log);
 }
 
+//======================================== Query
 async function getFrontPageContent() {
   const fPost = await getFeaturedPost();
   const fComments = await getFeaturedComments();
