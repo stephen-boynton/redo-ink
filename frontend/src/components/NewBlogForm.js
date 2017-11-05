@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import "../styles/NewBlogForm.css";
-require("medium-editor/dist/css/medium-editor.css");
-require("medium-editor/dist/css/themes/default.css");
 
 export default class NewBlogForm extends Component {
   constructor() {

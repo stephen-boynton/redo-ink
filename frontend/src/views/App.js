@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import axios from "axios";
-import MainNav from "./MainNav";
-import HomeView from "../views/HomeView";
-import BlogView from "../views/BlogView";
-import NewView from "../views/NewView";
-import SignUpView from "../views/SignUpView";
-import SignInView from "../views/SignInView";
-import ProfileView from "../views/ProfileView";
+import MainNav from "../components/MainNav";
+import HomeView from "./HomeView";
+import BlogView from "./BlogView";
+import NewView from "./NewView";
+import SignUpView from "./SignUpView";
+import SignInView from "./SignInView";
+import ProfileView from "./ProfileView";
 import "../styles/App.css";
 
 class App extends Component {
