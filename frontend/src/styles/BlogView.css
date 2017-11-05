@@ -1,0 +1,6 @@
+.BlogView {
+  margin-top: 1em;
+  display: flex;
+  justify-content: center;
+  padding: 1em;
+}

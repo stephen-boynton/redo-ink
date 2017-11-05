@@ -1,0 +1,29 @@
+.MainNav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2em;
+  background-color: white;
+}
+
+.MainNav a {
+  text-decoration: none;
+  margin: 0 10px 0 10px;
+  padding: 0.5em;
+  font-size: 18px;
+  color: #c43235;
+}
+
+.MainNav a:hover {
+  border: 0.5px solid #c43235;
+  cursor: pointer;
+}
+
+.MainNav #logo {
+  padding: 0;
+}
+
+.MainNav #logo:hover {
+  background-color: white;
+  border: none;
+}

@@ -1,0 +1,31 @@
+.SignInForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1em;
+  padding: 5em;
+  background-color: white;
+}
+
+.SignInForm form {
+  display: flex;
+  width: 30%;
+  flex-direction: column;
+  align-items: center;
+}
+
+.SignInForm form input {
+  font-size: 1.2em;
+  width: 100%;
+  margin: 0.5em;
+}
+
+.SignInForm form button {
+  font-size: 1.2em;
+  padding: 0.5em;
+}
+
+.SignInForm p {
+  color: red;
+  margin: 10px 0px;
+}

@@ -1,0 +1,51 @@
+.BlogComment {
+  width: 100%;
+  background-color: white;
+  border: 0.5px solid lightgray;
+  justify-content: center;
+  align-content: center;
+  display: flex;
+}
+
+.BlogCommentTop {
+  display: flex;
+  align-items: center;
+}
+
+.BlogCommentTop img {
+  max-height: 3em;
+}
+
+.BlogCommentTop p {
+  margin: 0 1em;
+}
+
+.BlogComment form {
+  padding: 1em;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.BlogComment input,
+.BlogComment textarea {
+  font-size: 1.1em;
+  margin: 0.5em 0;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.fadeInUp {
+  animation: fadeInUp 1s forwards;
+}

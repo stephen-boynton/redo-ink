@@ -1,0 +1,22 @@
+.NewBlogForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: white;
+  padding: 5%;
+}
+
+.NewBlogForm form {
+  display: flex;
+  flex-direction: column;
+}
+
+.NewBlogForm h2 {
+  margin: 0;
+}
+
+.NewBlogForm input,
+.NewBlogForm textarea {
+  font-size: 1.1em;
+  margin: 0.5em 0;
+}

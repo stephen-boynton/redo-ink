@@ -1,0 +1,14 @@
+.Comment {
+  display: flex;
+  margin: 1em;
+  background-color: lightgray;
+}
+
+.Comment img {
+  max-height: 5em;
+  margin-right: 1em;
+}
+
+.Comment p {
+  line-height: 1.6em;
+}

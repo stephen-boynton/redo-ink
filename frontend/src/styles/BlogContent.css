@@ -1,0 +1,13 @@
+.BlogContent {
+  background-color: white;
+  padding: 1em;
+}
+
+.BlogContent img {
+  margin: 1em 0;
+  max-width: 30em;
+}
+
+.BlogContent p {
+  line-height: 1.6em;
+}

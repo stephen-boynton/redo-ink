@@ -1,0 +1,7 @@
+.FeaturedComments {
+  background-color: white;
+  padding: 1em;
+  margin-left: 1em;
+  overflow-y: auto;
+  max-height: 35em;
+}

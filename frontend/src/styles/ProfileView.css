@@ -1,0 +1,10 @@
+.ProfileView {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ProfileBlogRow {
+  display: flex;
+  flex-wrap: wrap;
+}
