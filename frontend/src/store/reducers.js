@@ -3,7 +3,8 @@
 // .then(posts => this.setState({ posts: posts }));
 
 const initialState = {
-  posts: []
+  mainPagePosts: [],
+  draftPost: []
 };
 
 const reducer = function(state = initialState, action) {
