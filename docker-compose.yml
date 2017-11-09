@@ -14,7 +14,7 @@ services:
       - "3000:3000"
     command: npm start
     networks:
-      - tiy
+      - test
 
   backend:
     build:
@@ -34,7 +34,7 @@ services:
       - test
   db:
     image: mongo:latest
-    container_name: "mongodb"
+    container_name: "blog"
     environment:
       - MONGO_DATA_DIR=/data/db
       - MONGO_LOG_DIR=/dev/null
