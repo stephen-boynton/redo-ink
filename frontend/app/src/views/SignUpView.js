@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { connect } from "react-redux";
+import { signUpService } from "../services";
 import SignUpForm from "../components/SignUpForm";
 import "../styles/SignUpView.css";
 
-export default class SignUpView extends Component {
+class SignUpView extends Component {
   state = {
     errorMessage: "",
     success: false
@@ -19,28 +21,7 @@ export default class SignUpView extends Component {
       avatar: e.target[5].value,
       bio: e.target[6].value
     };
-    axios
-      .post("https://the-ink.crabdance.com/users/signup", newMember)
-      .then(response => {
-        if (!response.data) {
-          this.setState({
-            errorMessage: "* Username already exists. *"
-          });
-          return;
-        } else {
-          e.target[0].value = "";
-          e.target[1].value = "";
-          e.target[2].value = "";
-          e.target[3].value = "";
-          e.target[4].value = "";
-          e.target[5].value = "";
-          e.target[6].value = "";
-          this.setState({
-            errorMessage: "",
-            success: true
-          });
-        }
-      });
+    this.props.signUp(newMember);
   };
   _showForm() {
     if (this.state.success) {
@@ -58,3 +39,11 @@ export default class SignUpView extends Component {
     return <div className="SignUpView col-4-4">{this._showForm()}</div>;
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    signUp: newUser => dispatch(signUpService(newUser))
+  };
+};
+
+export default connect(null, mapDispatchToProps)(SignUpView);
