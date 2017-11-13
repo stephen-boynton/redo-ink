@@ -126,14 +126,6 @@ class App extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  state;
-  // return {
-  //   isAuthenticated: this.state.isAuthenticated
-  // };
-}
-// this.props = {
-//    //whatever mapStateToProps returns
-// }
+function mapStateToProps(state) {}
 
 export default connect(mapStateToProps)(App);
