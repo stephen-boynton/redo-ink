@@ -50,7 +50,7 @@ AuthorSchema.methods.validPassword = function(password, dbpassword, done) {
   });
 };
 
-const Author = mongoose.model("User", UserSchema);
+const Author = mongoose.model("Author", AuthorSchema);
 const Post = mongoose.model("Post", PostSchema);
 const Comment = mongoose.model("Comment", CommentSchema);
 

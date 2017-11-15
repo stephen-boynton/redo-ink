@@ -8,7 +8,7 @@ mongoose.connect("mongodb://localhost:27017/blogDB");
 function createAuthor(authorObj) {
   const author = new Author({
     username: authorObj.username,
-    password: this.generateHash(authorObj.password),
+    password: Author.generateHash(authorObj.password),
     img: authorObj.img,
     name: authorObj.name,
     email: authorObj.email,
