@@ -24,7 +24,7 @@ class SignUpView extends Component {
     this.props.signUp(newMember);
   };
   _showForm() {
-    if (this.state.success) {
+    if (this.props.isSignedUp) {
       return <h2 className="SignUpForm">Account created, please log in</h2>;
     } else {
       return (
@@ -40,10 +40,16 @@ class SignUpView extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    isSignedUp: state.signedUp
+  };
+};
+
 const mapDispatchToProps = dispatch => {
   return {
     signUp: newUser => dispatch(signUpService(newUser))
   };
 };
 
-export default connect(null, mapDispatchToProps)(SignUpView);
+export default connect(mapStateToProps, mapDispatchToProps)(SignUpView);

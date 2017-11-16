@@ -1,5 +1,5 @@
 import update from "immutability-helper";
-import { DRAFT_POST, SIGN_UP, SIGN_IN } from "../constants.js";
+import { DRAFT_POST, SIGN_UP, LOGIN } from "../constants.js";
 
 const initialState = {
   mainPagePosts: {
@@ -10,7 +10,7 @@ const initialState = {
   },
   draftPost: [],
   archive: [],
-  user: {},
+  user: "",
   signedUp: ""
 };
 
@@ -19,6 +19,10 @@ const reducer = function(state = initialState, action) {
     case SIGN_UP:
       return update(state, {
         signedUp: { $set: action.payload }
+      });
+    case LOGIN:
+      return update(state, {
+        user: { $set: action.payload }
       });
     default:
       return state;

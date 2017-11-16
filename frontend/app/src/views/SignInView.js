@@ -1,43 +1,30 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import axios from "axios";
 import SignInForm from "../components/SignInForm";
+import { loginService } from "../services";
 import "../styles/SignInView.css";
 
-export default class SignInView extends Component {
+class SignInView extends Component {
   //ERROR:  This component rerenders so that it will not display the successful login correctly
+
   state = {
-    errorMessage: "",
-    success: false
+    errorMessage: ""
   };
   _handleLogIn = e => {
     e.preventDefault();
     e.persist();
-    const login = {
+    const loginInfo = {
       username: e.target[0].value,
       pass: e.target[1].value
     };
-    axios
-      .post("https://the-ink.crabdance.com/users/signin", login)
-      .then(response => {
-        if (response.data) {
-          this.setState({
-            errorMessage: "",
-            success: true
-          });
-          window.localStorage.setItem("token", response.data.token);
-          this.props.authenticate(response.data.user);
-        } else if (response.data === false) {
-          this.setState({
-            errorMessage: "Invalid username or password"
-          });
-        }
-      });
+    this.props.login(loginInfo);
   };
 
   _successLogin = () => {
-    if (this.state.success) {
+    if (this.props.user) {
       return <h1 className="SignUpForm">You have been logged in.</h1>;
-    } else if (!this.state.success) {
+    } else if (!this.props.user) {
       return (
         <SignInForm
           error={this.state.errorMessage}
@@ -50,3 +37,17 @@ export default class SignInView extends Component {
     return <div className="SignInView">{this._successLogin()}</div>;
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    login: loginInfo => dispatch(loginService(loginInfo))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignInView);

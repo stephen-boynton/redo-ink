@@ -67,8 +67,38 @@ function getLatestPosts() {
     });
 }
 
+async function loginAuthor(creds) {
+  Author.where({ username: creds.username }).findOne((err, author) => {
+    if (err) console.error(err);
+    const valid = await Author.validPassword(
+      creds.pass,
+      author.password,
+      (err, isMatch) => {
+        if (err) console.error(err);
+        if (isMatch) return isMatch;
+      }
+    );
+    console.log("valid", valid);
+    if (valid) {
+      const returnAuth = {
+        name: author.name,
+        img: author.img,
+        username: author.username,
+        bio: author.bio,
+        favPost: author.favPost,
+        favComment: author.favComment
+      };
+      console.log("login person", returnAuth);
+      return returnAuth;
+    } else {
+      return false;
+    }
+  });
+}
+
 module.exports = {
   createAuthor,
   createPost,
-  getFrontPageContent
+  getFrontPageContent,
+  loginAuthor
 };

@@ -43,9 +43,9 @@ AuthorSchema.statics.generateHash = function(password) {
 };
 
 // checking if password is valid
-AuthorSchema.methods.validPassword = function(password, dbpassword, done) {
+AuthorSchema.statics.validPassword = function(password, dbpassword, done) {
   bcrypt.compare(password, dbpassword, (err, isMatch) => {
-    console.log("password check");
+    console.log("password check", isMatch);
     done(err, isMatch);
   });
 };
