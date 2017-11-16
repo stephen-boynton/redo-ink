@@ -10,14 +10,15 @@ const initialState = {
   },
   draftPost: [],
   archive: [],
-  user: {}
+  user: {},
+  signedUp: ""
 };
 
 const reducer = function(state = initialState, action) {
   switch (action.type) {
     case SIGN_UP:
       return update(state, {
-        user: { $set: action.payload }
+        signedUp: { $set: action.payload }
       });
     default:
       return state;

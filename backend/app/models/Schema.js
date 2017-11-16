@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const moment = require("moment");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 const AuthorSchema = new mongoose.Schema({
   username: { type: String },

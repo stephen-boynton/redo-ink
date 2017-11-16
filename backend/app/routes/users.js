@@ -10,6 +10,8 @@ router.get("/", function(req, res, next) {
 router.post("/signup", async (req, res, next) => {
   console.log(req.body);
   const author = await createAuthor(req.body);
+  if (author) res.send(true);
+  res.send(false);
 });
 
 module.exports = router;
