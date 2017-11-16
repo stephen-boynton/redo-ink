@@ -44,9 +44,11 @@ AuthorSchema.statics.generateHash = function(password) {
 
 // checking if password is valid
 AuthorSchema.statics.validPassword = function(password, dbpassword, done) {
-  bcrypt.compare(password, dbpassword, (err, isMatch) => {
-    console.log("password check", isMatch);
-    done(err, isMatch);
+  return new Promise((resolve, reject) => {
+    bcrypt.compare(password, dbpassword, (err, isMatch) => {
+      console.log("password check", isMatch);
+      resolve(done(err, isMatch));
+    });
   });
 };
 

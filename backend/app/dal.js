@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const jwt = require("jsonwebtoken");
 const { Author, Post, Comment } = require("./models/Schema");
 mongoose.Promise = require("bluebird");
 
@@ -67,32 +68,40 @@ function getLatestPosts() {
     });
 }
 
+function getAuthorByUserName(username) {
+  return new Promise((resolve, reject) => {
+    Author.where({
+      username: username.username
+    }).findOne((err, author) => {
+      if (err) console.error(err);
+      resolve(author);
+    });
+  });
+}
+
+// ============================= Log in =========
 async function loginAuthor(creds) {
-  Author.where({ username: creds.username }).findOne((err, author) => {
+  const loggedIn = await getAuthorByUserName(creds.username);
+  const valid = await validPass(creds.pass, loggedIn.password);
+  console.log("valid", valid);
+  if (valid) {
+    const returnAuth = {
+      name: loggedIn.name,
+      img: loggedIn.img,
+      username: loggedIn.username,
+      bio: loggedIn.bio,
+      favPost: loggedIn.favPost,
+      favComment: loggedIn.favComment
+    };
+    console.log("login person", returnAuth);
+    return returnAuth;
+  }
+}
+
+function validPass(formPass, databasePass) {
+  Author.validPassword(formPass, databasePass, (err, isMatch) => {
     if (err) console.error(err);
-    const valid = await Author.validPassword(
-      creds.pass,
-      author.password,
-      (err, isMatch) => {
-        if (err) console.error(err);
-        if (isMatch) return isMatch;
-      }
-    );
-    console.log("valid", valid);
-    if (valid) {
-      const returnAuth = {
-        name: author.name,
-        img: author.img,
-        username: author.username,
-        bio: author.bio,
-        favPost: author.favPost,
-        favComment: author.favComment
-      };
-      console.log("login person", returnAuth);
-      return returnAuth;
-    } else {
-      return false;
-    }
+    if (isMatch) return isMatch;
   });
 }
 
